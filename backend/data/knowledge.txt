@@ -1,0 +1,21 @@
+waterGPT is a multi-modal, multilingual AI chatbot developed as part of the Elevance Skills internship project. It supports general chat, medical question answering, scientific research explanation, image understanding, sentiment analysis, multilingual communication, and dynamic knowledge base expansion.
+
+The chatbot uses retrieval-augmented generation, also known as RAG. RAG combines a vector database with a large language model. Documents are converted into embeddings and stored in a FAISS vector index. When the user asks a question, the system searches the FAISS index for relevant context and sends that context to the language model to generate a more accurate answer.
+
+The project uses Groq API for fast inference with open-source Llama models. The original internship task suggested Google PaLM or Gemini APIs, but Groq-hosted Llama models are used as an accessible alternative due to billing constraints and reproducibility requirements.
+
+The backend is built with FastAPI. It exposes API endpoints for chat, image analysis, knowledge base updates, analytics, and settings. The frontend is built with Next.js and provides a custom black luxury user interface inspired by the waterGPT design.
+
+The medical question answering module uses the MedQuAD dataset. MedQuAD contains medical question-answer pairs from trusted medical sources. The chatbot retrieves relevant medical Q&A entries and generates safe educational responses. It also includes basic medical entity recognition for symptoms, diseases, treatments, and body parts.
+
+The research assistant module uses an arXiv subset. It helps users understand scientific papers, summarize research concepts, and answer technical questions. The system uses RAG to retrieve relevant paper abstracts and generate explanations with an open-source LLM.
+
+The sentiment analysis module uses VADER sentiment analysis. It classifies user messages as positive, neutral, or negative. The chatbot adapts its response tone based on the detected sentiment.
+
+The multilingual module uses automatic language detection and translation. User input can be detected and translated into English for processing, then translated back into the selected target language. The frontend supports more than thirty languages including English, Hindi, Telugu, Tamil, Spanish, French, Arabic, Chinese, Japanese, German, Portuguese, Russian, Korean, Bengali, Marathi, Gujarati, Kannada, Malayalam, Urdu, Punjabi, Vietnamese, Thai, Indonesian, Polish, Swedish, Greek, and Hebrew.
+
+The dynamic knowledge base module allows users to add new information from URLs, pasted text, or uploaded files. The added information is chunked, embedded, and stored in FAISS. This allows the chatbot to expand its knowledge base over time.
+
+The vision module allows users to upload an image and ask questions about it. The backend sends the image to a Groq vision-capable Llama model and returns a textual explanation of the visual content.
+
+This project demonstrates practical implementation of modern AI chatbot architecture including API design, vector search, large language models, multi-modal interaction, multilingual support, sentiment-aware responses, and professional frontend development.
