@@ -1,13 +1,13 @@
 # waterGPT: Multi-Modal, Multilingual RAG Chatbot
 
-waterGPT is a full-stack AI chatbot developed as part of the **Elevance Skills Internship**. The project combines medical question answering, scientific research assistance, image understanding, sentiment analysis, multilingual communication, voice transcription, and Retrieval-Augmented Generation (RAG) into a single intelligent platform.
+waterGPT is a full-stack AI chatbot developed as part of the Elevance Skills Internship. The project combines medical question answering, scientific research assistance (with paper search, extractive summarization, and concept visualization), multi-modal image understanding and generation via Google Gemini, sentiment analysis, multilingual communication, voice transcription, and Retrieval-Augmented Generation (RAG) into a single intelligent platform.
 
-The system integrates multiple AI technologies including Large Language Models, Vector Databases, Semantic Search, Image Understanding Models, Voice Processing, and Dynamic Knowledge Base Expansion. It demonstrates how modern AI applications can combine multiple capabilities into a unified and scalable solution.
+The system integrates multiple AI technologies including Large Language Models, Google Gemini multi-modal models, Vector Databases, Semantic Search, Classical NLP (TF-IDF, TextRank), Voice Processing, and Dynamic Knowledge Base Expansion. It demonstrates how modern AI applications can combine multiple capabilities into a unified and scalable solution.
 
 The repository includes:
 
-1. **Streamlit Interface** — Primary Internship-Compatible Implementation
-2. **Next.js + FastAPI Interface** — Advanced Production-Style Implementation
+- Streamlit Interface — Primary Internship-Compatible Implementation
+- Next.js + FastAPI Interface — Advanced Production-Style Implementation
 
 The Streamlit interface satisfies all internship requirements, while the Next.js + FastAPI implementation extends the project into a more realistic production-ready architecture.
 
@@ -16,9 +16,12 @@ The Streamlit interface satisfies all internship requirements, while the Next.js
 # Author
 
 **Name:** Vinayak Varshith Reddy Vangeti
+
 **Role:** AI/ML Intern
+
 **Program:** Elevance Skills Internship
-**Email:** [varshithreddyy6@gmail.com](mailto:varshithreddyy6@gmail.com)
+
+**Email:** varshithreddyy6@gmail.com
 
 ---
 
@@ -30,13 +33,14 @@ In domains such as healthcare and scientific research, incorrect information can
 
 waterGPT was developed to address these challenges through the integration of:
 
-* Retrieval-Augmented Generation (RAG)
-* Domain-specific knowledge bases
-* Semantic search
-* Image understanding
-* Sentiment-aware interaction
-* Multilingual communication
-* Dynamic knowledge updates
+- Retrieval-Augmented Generation (RAG)
+- Domain-specific knowledge bases
+- Semantic search
+- Multi-modal image understanding and generation
+- Research paper search and extractive summarization
+- Sentiment-aware interaction
+- Multilingual communication
+- Dynamic knowledge updates
 
 The project demonstrates how modern AI systems can provide more reliable and contextual responses by combining Large Language Models with external knowledge retrieval.
 
@@ -48,27 +52,30 @@ waterGPT is designed as an intelligent assistant capable of answering questions 
 
 The platform can:
 
-* Answer general user questions
-* Retrieve medical information from MedQuAD
-* Explain scientific research concepts using arXiv papers
-* Analyze uploaded images
-* Detect user sentiment
-* Support multilingual interaction
-* Accept voice input
-* Expand its knowledge base dynamically
-* Provide source-aware responses
+- Answer general user questions
+- Retrieve medical information from MedQuAD
+- Search, summarize, and visualize arXiv research papers
+- Analyze uploaded images
+- Generate new images
+- Edit existing images
+- Detect user sentiment
+- Support multilingual interaction
+- Accept voice input
+- Expand its knowledge base dynamically
+- Provide source-aware responses
 
 Unlike conventional chatbots, waterGPT retrieves relevant information from indexed knowledge sources before generating responses. This retrieval-first approach improves factual accuracy and reduces hallucinations.
 
 The system uses:
 
-* Groq-hosted Llama Models
-* FAISS Vector Database
-* SentenceTransformers Embeddings
-* VADER Sentiment Analysis
-* Translation Services
-* Vision-Capable AI Models
-* Voice Transcription Models
+- Groq-hosted Llama Models
+- Google Gemini Multi-Modal Models (image understanding, image generation, image editing)
+- FAISS Vector Database
+- SentenceTransformers Embeddings
+- TF-IDF + TextRank Extractive Summarization (scikit-learn)
+- VADER Sentiment Analysis
+- Translation Services
+- Voice Transcription Models
 
 ---
 
@@ -76,52 +83,50 @@ The system uses:
 
 The primary objectives of waterGPT are:
 
-### 1. Intelligent Question Answering
+## 1. Intelligent Question Answering
 
 Develop a chatbot capable of answering questions across multiple domains while maintaining contextual relevance and response quality.
 
-### 2. Medical Knowledge Retrieval
+## 2. Medical Knowledge Retrieval
 
 Build a medical assistant using trusted medical question-answer datasets and retrieval-based response generation.
 
-### 3. Research Assistance
+## 3. Research Assistance
 
-Enable users to explore scientific topics using information retrieved from real research papers.
+Enable users to explore scientific topics using information retrieved from real research papers, with dedicated paper search, extractive summarization, keyword extraction, and concept visualization.
 
-### 4. Multi-Modal Interaction
+## 4. Multi-Modal Interaction
 
-Support image-based interaction through image upload and visual question answering.
+Support bidirectional image-based interaction: understanding uploaded images, generating brand-new images from text prompts, and editing existing images via text instructions, using Google Gemini.
 
-### 5. Dynamic Knowledge Expansion
+## 5. Dynamic Knowledge Expansion
 
 Allow users to continuously expand the chatbot's knowledge through external sources.
 
-### 6. Multilingual Communication
+## 6. Multilingual Communication
 
 Provide seamless interaction across multiple languages.
 
-### 7. Sentiment-Aware Responses
+## 7. Sentiment-Aware Responses
 
 Adapt responses based on detected user sentiment.
 
-### 8. Voice Interaction
+## 8. Voice Interaction
 
 Enable speech-based interaction through audio transcription.
-
----
 
 # Internship Tasks Covered
 
 The project successfully implements all internship requirements.
 
-| Internship Task                   | Implementation                                                  |
-| --------------------------------- | --------------------------------------------------------------- |
-| Dynamic Knowledge Base Expansion  | URL, text, file, and PDF ingestion with automatic FAISS updates |
-| Multi-Modal Chatbot               | Image understanding using Groq vision models                    |
-| Medical Q&A Chatbot using MedQuAD | RAG-based medical assistant using MedQuAD                       |
-| arXiv Research Expert Chatbot     | Research assistant using arXiv paper retrieval                  |
-| Sentiment Analysis                | VADER-based sentiment classification                            |
-| Multilingual Chatbot              | Language detection and translation support                      |
+| Internship Task | Implementation |
+|-----------------|----------------|
+| Dynamic Knowledge Base Expansion | URL, text, file, and PDF ingestion with automatic FAISS updates |
+| Multi-Modal Chatbot (Google Gemini) | Image understanding, image generation, and image editing using Google Gemini (gemini-2.5-flash, gemini-2.5-flash-image) |
+| Medical Q&A Chatbot using MedQuAD | RAG-based medical assistant using MedQuAD |
+| arXiv Research Expert Chatbot | Dedicated paper search (keyword/category/author filters), TextRank extractive summarization, TF-IDF keyword extraction, and TF-IDF + SVD concept-map visualization, in addition to conversational retrieval |
+| Sentiment Analysis | VADER-based sentiment classification |
+| Multilingual Chatbot | Language detection and translation support |
 
 ---
 
@@ -131,13 +136,13 @@ The project successfully implements all internship requirements.
 
 The chatbot supports natural conversation using Groq-hosted Llama models.
 
-Features include:
+### Features
 
-* Context-aware responses
-* Follow-up question handling
-* Multi-turn conversations
-* Semantic understanding
-* Response generation using LLMs
+- Context-aware responses
+- Follow-up question handling
+- Multi-turn conversations
+- Semantic understanding
+- Response generation using LLMs
 
 ---
 
@@ -145,135 +150,206 @@ Features include:
 
 The medical assistant retrieves information from the MedQuAD dataset before generating responses.
 
-Capabilities include:
+### Capabilities
 
-* Medical question answering
-* Medical knowledge retrieval
-* Symptom explanation
-* Disease information retrieval
-* Treatment-related information
-* Educational medical responses
+- Medical question answering
+- Medical knowledge retrieval
+- Symptom explanation
+- Disease information retrieval
+- Treatment-related information
+- Educational medical responses
 
-Additional functionality:
+### Additional Functionality
 
-* Medical entity recognition
-* Retrieval-based grounding
-* Safety reminders
+- Medical entity recognition
+- Retrieval-based grounding
+- Safety reminders
 
-The assistant is intended for educational purposes and does not replace professional medical advice.
+> **Note:** The assistant is intended for educational purposes and does not replace professional medical advice.
 
 ---
 
 ## Research Assistant
 
-The research assistant uses arXiv research papers to answer scientific and technical questions.
+The research assistant uses arXiv research papers to answer scientific and technical questions. It also provides a dedicated research toolkit including paper search, extractive summarization, keyword extraction, and concept visualization.
 
-Capabilities include:
+The Research Assistant is organized into three modes.
 
-* Research paper retrieval
-* Scientific concept explanation
-* Topic summarization
-* Research-oriented discussions
-* Technical knowledge exploration
+### 1. Ask (Conversational RAG)
 
-Supported domains include:
+- Research paper retrieval via FAISS
+- Scientific concept explanation
+- Research-oriented discussions
+- Technical knowledge exploration
 
-* Artificial Intelligence
-* Machine Learning
-* Natural Language Processing
-* Information Retrieval
-* Computer Vision
+### 2. Search Papers
 
----
-
-## Vision AI
-
-The Vision AI module enables image understanding and visual question answering.
+A dedicated structured search interface over the indexed arXiv corpus.
 
 Features include:
 
-* Image upload
-* Image analysis
-* Object understanding
-* Visual reasoning
-* Context-aware image explanations
+- Free-text search across paper titles and abstracts
+- Filter by arXiv category (cs.AI, cs.CL, cs.LG, cs.IR, cs.CV)
+- Filter by author name
+- Per-paper **Summarize + Keywords** action using TextRank and TF-IDF
 
-Users can upload images and ask questions about their contents.
+### 3. Visualize
 
-Examples:
+Concept visualization computed directly from the indexed arXiv corpus.
 
-* "Describe this image"
-* "What objects are visible?"
-* "Explain what is happening in this image"
-* "Identify important visual elements"
+Includes:
+
+- Category distribution bar chart
+- Corpus keyword frequency using TF-IDF
+- Concept map generated using TF-IDF + Truncated SVD
+
+### Summarization & Information Extraction
+
+Paper summaries are generated using **TextRank**, a graph-based extractive summarization algorithm built on TF-IDF sentence similarity.
+
+Keyword extraction uses **TF-IDF scoring** over n-grams.
+
+Both methods execute locally using **scikit-learn**, without requiring an LLM.
+
+### Supported Domains
+
+- Artificial Intelligence
+- Machine Learning
+- Natural Language Processing
+- Information Retrieval
+- Computer Vision
 
 ---
 
-## Voice Input
+## Vision AI (Google Gemini)
+
+The Vision AI module is powered by Google Gemini and supports a complete bidirectional multi-modal workflow.
+
+### 1. Understand (Image → Text)
+
+Features:
+
+- Image upload
+- Visual question answering
+- Object understanding
+- Visual reasoning
+- Context-aware image explanations
+
+Powered by:
+
+- gemini-2.5-flash
+
+Example prompts:
+
+- Describe this image.
+- What objects are visible?
+- Explain what is happening in this image.
+- Identify important visual elements.
+
+---
+
+### 2. Generate (Text → Image)
+
+Features:
+
+- Generate brand-new images from text prompts
+- Images rendered directly in the chat interface
+
+Powered by:
+
+- gemini-2.5-flash-image
+
+Example prompt:
+
+> A watercolor painting of a mountain lake at sunset.
+
+---
+
+### 3. Edit (Image + Text → Image)
+
+Features:
+
+- Upload an existing image
+- Describe required modifications
+- Receive a newly generated edited image
+
+Powered by:
+
+- gemini-2.5-flash-image
+
+Example prompt:
+
+> Turn this image into a watercolor painting.
+
+This completes the internship requirement for a Multi-Modal Chatbot by supporting image understanding, image generation, and image editing.
+
+---
+
+# Voice Input
 
 The advanced interface supports voice-based interaction.
 
-Features include:
+## Features
 
-* Browser audio recording
-* Audio upload
-* Speech-to-text conversion
-* Automatic transcription
-* Chat integration
+- Browser audio recording
+- Audio upload
+- Speech-to-text conversion
+- Automatic transcription
+- Chat integration
 
-Voice processing is handled using Groq Whisper transcription models.
+Voice processing is handled using **Groq Whisper** transcription models.
 
 ---
 
-## Dynamic Knowledge Base Expansion
+# Dynamic Knowledge Base Expansion
 
 One of the most important features of waterGPT is the ability to continuously expand its knowledge base.
 
-Supported sources include:
+## Supported Sources
 
-* URLs
-* Plain Text
-* Text Files
-* CSV Files
-* Markdown Files
-* PDF Documents
+- URLs
+- Plain Text
+- Text Files
+- CSV Files
+- Markdown Files
+- PDF Documents
 
 The uploaded content is automatically:
 
-1. Extracted
-2. Cleaned
-3. Chunked
-4. Embedded
-5. Indexed into FAISS
+- Extracted
+- Cleaned
+- Chunked
+- Embedded
+- Indexed into FAISS
 
 Once indexed, the content becomes available for future retrieval.
 
 ---
 
-## Sentiment Analysis
+# Sentiment Analysis
 
 The system performs sentiment analysis on user messages.
 
-Supported sentiment categories:
+## Supported Sentiment Categories
 
-* Positive
-* Neutral
-* Negative
+- Positive
+- Neutral
+- Negative
 
 Sentiment information can be used to:
 
-* Analyze conversations
-* Track interaction patterns
-* Adjust response tone
-* Generate analytics data
+- Analyze conversations
+- Track interaction patterns
+- Adjust response tone
+- Generate analytics data
 
 ---
 
-## Multilingual Support
+# Multilingual Support
 
 waterGPT supports multilingual communication through automatic language detection and translation.
 
-The multilingual workflow includes:
+## Workflow
 
 1. Language Detection
 2. Translation to English
@@ -281,29 +357,31 @@ The multilingual workflow includes:
 4. Response Generation
 5. Translation Back to Target Language
 
-The system supports more than 30 languages, including:
+The system supports **30+ languages**, including:
 
-* English
-* Hindi
-* Telugu
-* Tamil
-* Spanish
-* French
-* German
-* Arabic
-* Chinese
-* Japanese
-* Portuguese
-* Russian
-* Korean
+- English
+- Hindi
+- Telugu
+- Tamil
+- Spanish
+- French
+- German
+- Arabic
+- Chinese
+- Japanese
+- Portuguese
+- Russian
+- Korean
 
-and many additional languages.
+and many more.
+
+---
 
 # System Architecture
 
 waterGPT follows a modular architecture that combines user interaction, knowledge retrieval, AI reasoning, image understanding, sentiment analysis, translation, and dynamic knowledge expansion.
 
-The architecture is designed to separate responsibilities across frontend, backend, AI services, and data storage components.
+The architecture separates responsibilities across the frontend, backend, AI services, and data storage components.
 
 ```text
 User
@@ -314,19 +392,19 @@ Streamlit Interface / Next.js Frontend
  v
 FastAPI Backend
  |
- +-------------------------+
- |                         |
- v                         v
-RAG Engine            Vision Service
- |                         |
- v                         v
-FAISS Vector DB      Groq Vision Models
- |
- v
-Knowledge Sources
- |
- +--------------------------+
- |            |             |
+ +--------------------+--------------------+
+ |                    |                    |
+ v                    v                    v
+RAG Engine      Vision Service      Research Engine
+ |                    |                    |
+ v                    v                    v
+FAISS Vector DB   Google Gemini      TF-IDF / TextRank /
+ |               (Understand /       Truncated SVD
+ v                Generate / Edit)         |
+Knowledge Sources                          v
+ |                                  Search · Summarize ·
+ +--------------------------+       Keyword Extraction ·
+ |            |             |       Concept Map
  v            v             v
 MedQuAD    arXiv      User Knowledge
 ```
@@ -341,35 +419,33 @@ The architecture allows each module to operate independently while sharing commo
 
 The frontend is responsible for collecting user input and displaying chatbot responses.
 
-Two frontend implementations are included:
-
 ### Streamlit Interface
 
-The Streamlit interface serves as the primary internship-compatible implementation.
+Primary internship-compatible implementation.
 
-Features:
+**Features**
 
-* Simple chatbot interface
-* Medical assistant
-* Research assistant
-* Vision AI
-* Knowledge base management
-* Sentiment analytics
-* Language settings
+- Simple chatbot interface
+- Medical assistant
+- Research assistant
+- Vision AI
+- Knowledge base management
+- Sentiment analytics
+- Language settings
 
 ### Next.js Interface
 
-The Next.js interface provides a more advanced user experience.
+Advanced production-ready frontend.
 
-Features:
+**Features**
 
-* Responsive UI
-* Multi-page navigation
-* Voice input
-* Better source visualization
-* Mobile support
-* Analytics dashboard
-* Enhanced user interactions
+- Responsive UI
+- Multi-page navigation
+- Voice input
+- Better source visualization
+- Mobile support
+- Analytics dashboard
+- Enhanced user interactions
 
 ---
 
@@ -377,16 +453,16 @@ Features:
 
 The FastAPI backend serves as the central processing layer.
 
-Responsibilities include:
+### Responsibilities
 
-* Request handling
-* AI model communication
-* Retrieval operations
-* Knowledge management
-* Translation
-* Sentiment analysis
-* Image processing
-* Voice transcription
+- Request handling
+- AI model communication
+- Retrieval operations
+- Knowledge management
+- Translation
+- Sentiment analysis
+- Image processing
+- Voice transcription
 
 The backend exposes REST APIs consumed by both frontend implementations.
 
@@ -394,32 +470,32 @@ The backend exposes REST APIs consumed by both frontend implementations.
 
 ## AI Layer
 
-The AI layer contains:
+The AI layer contains multiple specialized models.
 
 ### Text Generation Models
 
 Used for:
 
-* General conversation
-* Medical responses
-* Research explanations
-* Knowledge-grounded answers
+- General conversation
+- Medical responses
+- Research explanations
+- Knowledge-grounded answers
 
 ### Vision Models
 
 Used for:
 
-* Image understanding
-* Visual question answering
-* Object recognition
-* Image explanation
+- Image understanding
+- Visual question answering
+- Object recognition
+- Image explanation
 
 ### Voice Models
 
 Used for:
 
-* Audio transcription
-* Speech-to-text conversion
+- Audio transcription
+- Speech-to-text conversion
 
 ---
 
@@ -427,21 +503,19 @@ Used for:
 
 The knowledge layer stores indexed information that can be retrieved during conversations.
 
-Sources include:
+### Sources
 
-* Medical datasets
-* Research papers
-* User-added knowledge
-* Uploaded files
-* External URLs
+- Medical datasets
+- Research papers
+- User-added knowledge
+- Uploaded files
+- External URLs
 
-This layer is implemented using FAISS vector search.
+This layer is implemented using the **FAISS Vector Database**.
 
 ---
 
 # End-to-End Workflow
-
-The complete workflow of waterGPT is illustrated below.
 
 ```text
 User Query
@@ -477,17 +551,15 @@ Translation (if required)
 User Response
 ```
 
-This workflow ensures that generated responses are grounded in retrieved information whenever available.
+This workflow ensures that generated responses are grounded in retrieved information whenever relevant knowledge is available.
 
----
+# Retrieval-Augmented Generation (RAG) Pipeline
 
-# Retrieval-Augmented Generation Pipeline
+waterGPT follows a Retrieval-Augmented Generation (RAG) architecture.
 
-waterGPT uses a Retrieval-Augmented Generation (RAG) architecture.
+Instead of relying entirely on the model's internal knowledge, the chatbot retrieves relevant information from external knowledge sources before generating a response.
 
-Instead of relying entirely on model memory, the chatbot retrieves relevant information before generating responses.
-
-The RAG pipeline consists of several stages.
+The RAG pipeline consists of the following stages.
 
 ---
 
@@ -495,14 +567,14 @@ The RAG pipeline consists of several stages.
 
 Knowledge is collected from multiple sources.
 
-Examples:
+### Sources
 
-* MedQuAD
-* arXiv
-* Text files
-* PDFs
-* URLs
-* User documents
+- MedQuAD
+- arXiv Research Papers
+- Text Files
+- PDF Documents
+- URLs
+- User Documents
 
 ---
 
@@ -510,46 +582,50 @@ Examples:
 
 Raw content is extracted from each source.
 
-Examples:
-
 ### PDF
 
 ```text
 PDF File
-→ Text Extraction
-→ Plain Text
+      ↓
+Text Extraction
+      ↓
+Plain Text
 ```
 
 ### URL
 
 ```text
 Web Page
-→ HTML Parsing
-→ Clean Text
+      ↓
+HTML Parsing
+      ↓
+Clean Text
 ```
 
 ### CSV
 
 ```text
 CSV File
-→ Structured Records
-→ Text Documents
+      ↓
+Structured Records
+      ↓
+Text Documents
 ```
 
 ---
 
 ## Stage 3: Chunking
 
-Large documents are split into smaller chunks.
+Large documents are divided into smaller chunks before embedding.
 
-Benefits:
+### Benefits
 
-* Improved retrieval accuracy
-* Better embedding quality
-* Reduced context size
-* Faster similarity search
+- Improved retrieval accuracy
+- Better embedding quality
+- Reduced context size
+- Faster similarity search
 
-Example:
+### Example
 
 ```text
 Document
@@ -564,38 +640,39 @@ Document
 
 ## Stage 4: Embedding Generation
 
-Each chunk is converted into a dense vector representation.
+Each document chunk is converted into a dense vector representation.
 
-Embedding Model:
+### Embedding Model
 
 ```text
 all-MiniLM-L6-v2
 ```
 
-Characteristics:
+### Characteristics
 
-* Lightweight
-* Fast
-* Semantic understanding
-* 384-dimensional embeddings
+- Lightweight
+- Fast
+- Semantic understanding
+- 384-dimensional embeddings
 
 ---
 
 ## Stage 5: FAISS Indexing
 
-Embeddings are stored in a FAISS vector database.
+Embeddings are stored inside a FAISS vector database.
 
-Benefits:
+### Benefits
 
-* Fast retrieval
-* Efficient similarity search
-* Scalability
-* Low memory overhead
+- Fast retrieval
+- Efficient similarity search
+- Scalable architecture
+- Low memory usage
 
-Stored Files:
+### Stored Files
 
 ```text
 backend/storage/faiss_index/index.faiss
+
 backend/storage/faiss_index/documents.pkl
 ```
 
@@ -603,7 +680,7 @@ backend/storage/faiss_index/documents.pkl
 
 ## Stage 6: Query Embedding
 
-When the user asks a question:
+When a user asks a question:
 
 ```text
 User Query
@@ -621,8 +698,6 @@ The query is converted into the same embedding space as the indexed documents.
 
 FAISS performs nearest-neighbor search.
 
-Example:
-
 ```text
 User Query
       ↓
@@ -631,25 +706,25 @@ FAISS Search
 Top Relevant Chunks
 ```
 
-Only the most relevant documents are selected.
+Only the most relevant document chunks are selected.
 
 ---
 
 ## Stage 8: Context Injection
 
-Retrieved chunks are injected into the prompt.
+Retrieved chunks are injected into the prompt before it is sent to the language model.
 
-Example:
+### Example
 
 ```text
 System Prompt
-+
+      +
 Retrieved Context
-+
+      +
 User Question
 ```
 
-This provides the model with external knowledge before response generation.
+This gives the language model relevant external knowledge before generating a response.
 
 ---
 
@@ -657,11 +732,11 @@ This provides the model with external knowledge before response generation.
 
 The LLM receives:
 
-* User question
-* Retrieved context
-* System instructions
+- User Question
+- Retrieved Context
+- System Instructions
 
-The model then generates a grounded response.
+It then generates a grounded and context-aware response.
 
 ---
 
@@ -673,32 +748,30 @@ waterGPT combines multiple datasets into a unified knowledge base.
 
 ## MedQuAD Dataset
 
-Source:
+### Source
 
-```text
 https://github.com/abachaa/MedQuAD
-```
 
-Purpose:
+### Purpose
 
-* Medical question answering
-* Healthcare information retrieval
+- Medical Question Answering
+- Healthcare Information Retrieval
 
-Characteristics:
+### Characteristics
 
-* Trusted medical sources
-* Question-answer pairs
-* Educational medical content
+- Trusted medical sources
+- Question-answer pairs
+- Educational medical content
 
-Used for:
+### Used For
 
-* Symptoms
-* Diseases
-* Treatments
-* Medical procedures
-* Healthcare information
+- Symptoms
+- Diseases
+- Treatments
+- Medical procedures
+- Healthcare information
 
-Indexed Documents:
+### Indexed Documents
 
 ```text
 16,359
@@ -708,18 +781,15 @@ Indexed Documents:
 
 ## arXiv Dataset
 
-Source:
+### Source
 
-```text
 https://arxiv.org/help/api
-```
 
-Purpose:
+### Purpose
 
-* Research assistance
-* Scientific knowledge retrieval
+Research Assistance
 
-Categories Used:
+### Categories
 
 ```text
 cs.AI
@@ -729,14 +799,14 @@ cs.IR
 cs.CV
 ```
 
-Contains:
+### Contains
 
-* Research paper titles
-* Authors
-* Categories
-* Abstracts
+- Research paper titles
+- Authors
+- Categories
+- Abstracts
 
-Indexed Documents:
+### Indexed Documents
 
 ```text
 355
@@ -746,15 +816,13 @@ Indexed Documents:
 
 ## Custom Knowledge Dataset
 
-The project also includes a custom knowledge file.
-
 Purpose:
 
-* Project-specific information
-* System knowledge
-* Additional contextual data
+- Project-specific knowledge
+- System information
+- Additional contextual data
 
-Indexed Documents:
+### Indexed Documents
 
 ```text
 1
@@ -764,45 +832,43 @@ Indexed Documents:
 
 # Dataset Statistics
 
-The final knowledge base consists of:
+| Dataset | Documents |
+|----------|----------:|
+| MedQuAD Medical Q&A | 16,359 |
+| arXiv Research Papers | 355 |
+| Custom Knowledge | 1 |
+| **Total Indexed Documents** | **16,715** |
 
-| Dataset                 | Documents |
-| ----------------------- | --------- |
-| MedQuAD Medical Q&A     | 16,359    |
-| arXiv Research Papers   | 355       |
-| Custom Knowledge        | 1         |
-| Total Indexed Documents | 16,715    |
-
-All documents are converted into vector embeddings and stored within the FAISS index.
-
----
+All documents are converted into embeddings and stored inside the FAISS vector database.
 
 # Technology Stack
 
 ## Frontend Technologies
 
-* Next.js
-* React
-* JavaScript
-* CSS
-* Recharts
-* Marked
+- Next.js
+- React
+- JavaScript
+- CSS
+- Recharts
+- Marked
 
 ---
 
 ## Backend Technologies
 
-* Python
-* FastAPI
-* Groq API
-* FAISS
-* SentenceTransformers
-* Pillow
-* BeautifulSoup
-* Feedparser
-* Langdetect
-* Deep Translator
-* pypdf
+- Python
+- FastAPI
+- Groq API
+- Google Gemini API (google-genai)
+- FAISS
+- SentenceTransformers
+- scikit-learn (TF-IDF, TextRank, Truncated SVD)
+- Pillow
+- BeautifulSoup
+- Feedparser
+- Langdetect
+- Deep Translator
+- PyPDF
 
 ---
 
@@ -816,22 +882,28 @@ Groq Llama Models
 
 Used for:
 
-* General chat
-* Medical responses
-* Research explanations
-* Knowledge-grounded answers
+- General chat
+- Medical responses
+- Research explanations
+- Knowledge-grounded answers
 
-### Vision Understanding
+---
+
+### Multi-Modal Vision
 
 ```text
-Groq Vision Models
+Google Gemini
+(gemini-2.5-flash, gemini-2.5-flash-image)
 ```
 
 Used for:
 
-* Image understanding
-* Visual reasoning
-* Object recognition
+- Image understanding
+- Visual question answering
+- Text-to-image generation
+- Image editing using text prompts
+
+---
 
 ### Voice Transcription
 
@@ -841,8 +913,10 @@ Groq Whisper
 
 Used for:
 
-* Speech-to-text conversion
-* Voice chat support
+- Speech-to-text conversion
+- Voice chat support
+
+---
 
 ### Embeddings
 
@@ -852,9 +926,11 @@ all-MiniLM-L6-v2
 
 Used for:
 
-* Semantic search
-* Document retrieval
-* Similarity matching
+- Semantic search
+- Document retrieval
+- Similarity matching
+
+---
 
 ### Vector Database
 
@@ -864,9 +940,27 @@ FAISS
 
 Used for:
 
-* Storage of embeddings
-* Fast similarity search
-* Retrieval operations
+- Embedding storage
+- Fast similarity search
+- Retrieval operations
+
+---
+
+### Extractive Summarization & Information Extraction
+
+```text
+TF-IDF + TextRank (scikit-learn)
+```
+
+Used for:
+
+- Extractive summarization
+- Keyword extraction
+- Corpus keyword frequency analysis
+- Concept-map visualization using Truncated SVD
+
+---
+
 # Backend Components
 
 The backend follows a modular service-oriented architecture where each service is responsible for a specific functionality.
@@ -875,111 +969,139 @@ The backend follows a modular service-oriented architecture where each service i
 
 ## Chat Service
 
-File:
+**File**
 
 ```text
 services/chat_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* General conversation
-* Prompt construction
-* Response generation
-* Context injection
-* Chat orchestration
+- General conversation
+- Prompt construction
+- Response generation
+- Context injection
+- Chat orchestration
 
-This service serves as the primary interaction layer between the user and the AI models.
+This service acts as the primary interaction layer between users and the AI models.
 
 ---
 
 ## Vision Service
 
-File:
+**File**
 
 ```text
 services/vision_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Image processing
-* Image encoding
-* Vision model communication
-* Visual question answering
+- Image processing
+- Google Gemini communication
+- Image understanding
+- Image generation
+- Image editing
+- Visual question answering
 
-This service handles all image-related operations.
+Supported operations:
+
+- `analyze_image()`
+- `generate_image_from_text()`
+- `edit_image_with_text()`
+
+---
+
+## Research Service
+
+**File**
+
+```text
+utils/research_engine.py
+```
+
+### Responsibilities
+
+- Structured arXiv paper search
+- TextRank summarization
+- TF-IDF keyword extraction
+- Keyword frequency analysis
+- TF-IDF + Truncated SVD concept-map generation
+
+Exposed through:
+
+```text
+api/research.py
+```
 
 ---
 
 ## Knowledge Service
 
-File:
+**File**
 
 ```text
 services/knowledge_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Knowledge ingestion
-* Document chunking
-* Embedding generation
-* FAISS updates
-* Retrieval operations
+- Knowledge ingestion
+- Document chunking
+- Embedding generation
+- FAISS indexing
+- Retrieval operations
 
-This service powers the Retrieval-Augmented Generation pipeline.
+This service powers the Retrieval-Augmented Generation (RAG) pipeline.
 
 ---
 
 ## Analytics Service
 
-File:
+**File**
 
 ```text
 services/analytics_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Sentiment statistics
-* Analytics reporting
-* Dashboard support
-
-Provides analytical information about chatbot interactions.
+- Sentiment statistics
+- Analytics reporting
+- Dashboard support
 
 ---
 
 ## Settings Service
 
-File:
+**File**
 
 ```text
 services/settings_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Language settings
-* Configuration retrieval
-* Frontend settings support
+- Language settings
+- Configuration management
+- Frontend settings
 
 ---
 
 ## Medical NER Service
 
-File:
+**File**
 
 ```text
 services/medical_ner_service.py
 ```
 
-Responsibilities:
+### Responsibilities
 
-* Symptom extraction
-* Disease detection
-* Treatment identification
-* Medical entity recognition
+- Symptom extraction
+- Disease detection
+- Treatment identification
+- Medical entity recognition
 
 Provides domain-specific medical understanding.
 
@@ -993,13 +1115,13 @@ The FastAPI backend exposes REST APIs used by both frontend implementations.
 
 ## Health Check
 
-### Request
+**Endpoint**
 
 ```http
 GET /
 ```
 
-### Purpose
+**Purpose**
 
 Verifies that the backend is running correctly.
 
@@ -1007,21 +1129,19 @@ Verifies that the backend is running correctly.
 
 ## Chat Endpoint
 
-### Request
+**Endpoint**
 
 ```http
 POST /chat
 ```
 
-### Purpose
+**Purpose**
 
-Handles:
+- General chat
+- Medical chat
+- Research chat
 
-* General chat
-* Medical chat
-* Research chat
-
-### Response
+**Response**
 
 Generated AI response with optional source information.
 
@@ -1029,27 +1149,83 @@ Generated AI response with optional source information.
 
 ## Vision Endpoint
 
-### Request
+**Endpoint**
 
 ```http
 POST /vision
 ```
 
-### Purpose
+**Purpose**
 
-Handles image uploads and visual question answering.
+Handles image uploads and visual question answering using Google Gemini.
 
 ---
 
-## Voice Transcription Endpoint
+## Image Generation Endpoint
 
-### Request
+**Endpoint**
+
+```http
+POST /vision/generate
+```
+
+**Purpose**
+
+Generates brand-new images from text prompts.
+
+**Response**
+
+```json
+{
+  "caption": "...",
+  "image_url": "..."
+}
+```
+
+---
+
+## Image Editing Endpoint
+
+**Endpoint**
+
+```http
+POST /vision/edit
+```
+
+**Purpose**
+
+Edits uploaded images using text instructions.
+
+**Response**
+
+```json
+{
+  "caption": "...",
+  "image_url": "..."
+}
+```
+
+---
+
+## Generated Image Retrieval
+
+**Endpoint**
+
+```http
+GET /vision/generated/{filename}
+```
+
+Returns previously generated images.
+
+---
+
+## Voice Transcription
+
+**Endpoint**
 
 ```http
 POST /voice/transcribe
 ```
-
-### Purpose
 
 Converts audio into text using Groq Whisper.
 
@@ -1057,94 +1233,80 @@ Converts audio into text using Groq Whisper.
 
 ## Knowledge Statistics
 
-### Request
+**Endpoint**
 
 ```http
 GET /knowledge/stats
 ```
 
-### Purpose
-
-Returns information about indexed documents.
+Returns indexed document statistics.
 
 ---
 
-## Add Knowledge From URL
+## Add Knowledge from URL
 
-### Request
+**Endpoint**
 
 ```http
 POST /knowledge/url
 ```
 
-### Purpose
-
-Adds content from a URL into the knowledge base.
+Adds website content into the knowledge base.
 
 ---
 
-## Add Knowledge From Text
+## Add Knowledge from Text
 
-### Request
+**Endpoint**
 
 ```http
 POST /knowledge/text
 ```
 
-### Purpose
-
-Adds user-provided text into the knowledge base.
+Adds plain text into the knowledge base.
 
 ---
 
-## Add Knowledge From File
+## Add Knowledge from File
 
-### Request
+**Endpoint**
 
 ```http
 POST /knowledge/file
 ```
 
-### Purpose
+Supports:
 
-Adds uploaded files into the knowledge base.
+- TXT
+- CSV
+- Markdown
+- PDF
 
-Supported formats:
-
-* TXT
-* CSV
-* MD
-* PDF
+Uploaded files are automatically indexed into FAISS.
 
 ---
 
 ## Clear Knowledge Base
 
-### Request
+**Endpoint**
 
 ```http
 DELETE /knowledge/clear
 ```
 
-### Purpose
-
-Clears the dynamic knowledge base.
+Removes all dynamically added knowledge.
 
 ---
 
 ## Supported Languages
 
-### Request
+**Endpoint**
 
 ```http
 GET /settings/languages
 ```
 
-### Purpose
-
-Returns available language options.
-
----
+Returns all available language options.
 
 # Frontend Pages
 
@@ -1154,141 +1316,151 @@ The advanced Next.js frontend contains multiple pages designed around specific c
 
 ## Home Page
 
-Route:
+**Route**
 
 ```text
 /
 ```
 
-Purpose:
+### Purpose
 
-* Landing page
-* Project introduction
-* Navigation
+- Landing page
+- Project introduction
+- Navigation to all chatbot modules
 
 ---
 
 ## Chat Page
 
-Route:
+**Route**
 
 ```text
 /chat
 ```
 
-Purpose:
+### Purpose
 
-* General conversations
-* Daily chatbot interaction
-* Voice-enabled chat
+- General AI conversations
+- Multi-turn dialogue
+- Voice-enabled chat
 
 ---
 
 ## Medical Assistant
 
-Route:
+**Route**
 
 ```text
 /medical
 ```
 
-Purpose:
+### Purpose
 
-* Medical question answering
-* Healthcare information retrieval
+- Medical question answering
+- Healthcare information retrieval
+- Educational medical assistance
 
 ---
 
 ## Research Assistant
 
-Route:
+**Route**
 
 ```text
 /research
 ```
 
-Purpose:
+### Purpose
 
-* Research exploration
-* Scientific concept explanation
+- Conversational research assistant
+- Scientific paper retrieval
+- arXiv paper search
+- Paper summarization
+- Keyword extraction
+- Category visualization
+- Concept-map visualization
 
 ---
 
 ## Vision AI
 
-Route:
+**Route**
 
 ```text
 /vision
 ```
 
-Purpose:
+### Purpose
 
-* Image upload
-* Visual question answering
+- Image upload
+- Image understanding
+- Visual question answering
+- Text-to-image generation
+- Image editing
 
 ---
 
 ## Knowledge Base Manager
 
-Route:
+**Route**
 
 ```text
 /knowledge
 ```
 
-Purpose:
+### Purpose
 
-* Add URLs
-* Add text
-* Upload files
-* Upload PDFs
-* Manage indexed content
+- Add URLs
+- Add text
+- Upload documents
+- Upload PDFs
+- Manage indexed knowledge
 
 ---
 
 ## Language Settings
 
-Route:
+**Route**
 
 ```text
 /language
 ```
 
-Purpose:
+### Purpose
 
-* Language selection
-* Translation configuration
+- Language selection
+- Translation configuration
 
 ---
 
 ## Analytics Dashboard
 
-Route:
+**Route**
 
 ```text
 /analytics
 ```
 
-Purpose:
+### Purpose
 
-* Sentiment analytics
-* Usage statistics
+- Sentiment analytics
+- Usage statistics
+- System analytics
 
 ---
 
 ## Settings Page
 
-Route:
+**Route**
 
 ```text
 /settings
 ```
 
-Purpose:
+### Purpose
 
-* Application configuration
-* System settings
+- Application configuration
+- System settings
 
 ---
 
@@ -1337,32 +1509,32 @@ Elevance_Skills_Internship
 
 # Installation Guide
 
-Before running the project, ensure the following software is installed:
+Before running the project, ensure the following software is installed.
 
 ## Prerequisites
 
-* Python 3.10+
-* Node.js 18+
-* npm
-* Git
+- Python 3.10+
+- Node.js 18+
+- npm
+- Git
 
 ---
 
 # Backend Setup
 
-Navigate to the backend directory:
+Navigate to the backend directory.
 
 ```bash
 cd backend
 ```
 
-Create a virtual environment:
+Create a virtual environment.
 
 ```bash
 python -m venv venv
 ```
 
-Activate the environment:
+Activate the virtual environment.
 
 ### Windows
 
@@ -1376,7 +1548,7 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```bash
 pip install -r requirements.txt
@@ -1384,9 +1556,9 @@ pip install -r requirements.txt
 
 ---
 
-## Environment Configuration
+# Environment Configuration
 
-Create a `.env` file inside the backend directory.
+Create a `.env` file inside the **backend** directory.
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
@@ -1397,6 +1569,13 @@ VISION_MODEL_PRIMARY=meta-llama/llama-4-scout-17b-16e-instruct
 
 VISION_MODEL_FALLBACK=meta-llama/llama-4-maverick-17b-128e-instruct
 
+# Google Gemini API
+GEMINI_API_KEY=your_gemini_api_key_here
+
+GEMINI_VISION_MODEL=gemini-2.5-flash
+
+GEMINI_IMAGE_MODEL=gemini-2.5-flash-image
+
 EMBEDDING_MODEL=all-MiniLM-L6-v2
 
 FAISS_INDEX_PATH=storage/faiss_index
@@ -1404,9 +1583,13 @@ FAISS_INDEX_PATH=storage/faiss_index
 FRONTEND_URL=http://localhost:3000
 ```
 
+> **Note:** Gemini's free API tier generally supports text and vision understanding (`gemini-2.5-flash`). Image generation (`gemini-2.5-flash-image`) requires a billing-enabled Google Cloud project.
+
 ---
 
-## Running the Backend
+# Running the Backend
+
+Start the backend server.
 
 ```bash
 python -m uvicorn main:app --port 8000
@@ -1434,19 +1617,19 @@ http://localhost:8000/docs
 
 # Frontend Setup
 
-Navigate to the frontend directory:
+Navigate to the frontend directory.
 
 ```bash
 cd frontend
 ```
 
-Install dependencies:
+Install dependencies.
 
 ```bash
 npm install
 ```
 
-Create:
+Create a file named:
 
 ```text
 .env.local
@@ -1458,13 +1641,13 @@ Add:
 NEXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
-Run frontend:
+Run the frontend.
 
 ```bash
 npm run dev
 ```
 
-For LAN testing:
+For LAN testing.
 
 ```bash
 npm run dev -- --hostname 0.0.0.0
@@ -1478,9 +1661,7 @@ http://localhost:3000
 
 ---
 
-# Streamlit Interface Setup
-
-The repository also includes a Streamlit implementation.
+# Streamlit Interface
 
 Ensure the backend is already running.
 
@@ -1496,13 +1677,13 @@ Streamlit URL:
 http://localhost:8501
 ```
 
----
-
 # Building the Knowledge Base
 
 The knowledge base can be rebuilt using the provided scripts.
 
-## Convert MedQuAD
+---
+
+## 1. Convert MedQuAD Dataset
 
 ```bash
 cd backend
@@ -1511,7 +1692,7 @@ python scripts\convert_medquad.py
 
 ---
 
-## Download arXiv Dataset
+## 2. Download arXiv Dataset
 
 ```bash
 python scripts\download_arxiv_subset.py
@@ -1519,7 +1700,7 @@ python scripts\download_arxiv_subset.py
 
 ---
 
-## Build FAISS Index
+## 3. Build FAISS Index
 
 ```bash
 python scripts\build_faiss_index.py
@@ -1532,13 +1713,16 @@ backend/storage/faiss_index/index.faiss
 
 backend/storage/faiss_index/documents.pkl
 ```
+
+---
+
 # Screenshots
 
 The project includes screenshots demonstrating the functionality of both the Streamlit interface and the advanced Next.js frontend.
 
-Place screenshots inside the `screenshots` directory.
+Place all screenshots inside the **screenshots** directory.
 
-Project screenshot structure:
+## Screenshot Structure
 
 ```text
 screenshots
@@ -1560,11 +1744,11 @@ screenshots
 
 ---
 
-## Advanced Next.js Interface
+# Advanced Next.js Interface
 
-### Home Page
+## Home Page
 
-Displays the landing page, navigation system, and project overview.
+Displays the landing page, project overview, and navigation.
 
 ```text
 screenshots/home.png
@@ -1572,7 +1756,7 @@ screenshots/home.png
 
 ---
 
-### Chat Interface
+## Chat Interface
 
 General conversational AI interface.
 
@@ -1582,7 +1766,7 @@ screenshots/chat.png
 
 ---
 
-### Medical Assistant
+## Medical Assistant
 
 Medical question answering using MedQuAD retrieval.
 
@@ -1592,7 +1776,7 @@ screenshots/medical.png
 
 ---
 
-### Research Assistant
+## Research Assistant
 
 Research-focused assistant powered by arXiv papers.
 
@@ -1602,9 +1786,9 @@ screenshots/research.png
 
 ---
 
-### Vision AI
+## Vision AI
 
-Image upload and visual question answering.
+Image understanding, image generation, and image editing using Google Gemini.
 
 ```text
 screenshots/vision.png
@@ -1612,7 +1796,7 @@ screenshots/vision.png
 
 ---
 
-### Knowledge Base Manager
+## Knowledge Base Manager
 
 Knowledge ingestion and management interface.
 
@@ -1622,9 +1806,9 @@ screenshots/knowledge.png
 
 ---
 
-### Analytics Dashboard
+## Analytics Dashboard
 
-Sentiment analytics and statistics.
+Displays sentiment analytics and usage statistics.
 
 ```text
 screenshots/analytics.png
@@ -1632,9 +1816,9 @@ screenshots/analytics.png
 
 ---
 
-### Settings Page
+## Settings Page
 
-Language selection and application configuration.
+Application configuration and language settings.
 
 ```text
 screenshots/settings.png
@@ -1642,9 +1826,9 @@ screenshots/settings.png
 
 ---
 
-## Streamlit Interface
+# Streamlit Interface
 
-### Overview
+## Overview
 
 Primary internship-compatible implementation.
 
@@ -1654,9 +1838,9 @@ screenshots/streamlit_overview.png
 
 ---
 
-### Medical Assistant
+## Medical Assistant
 
-Medical chatbot inside the Streamlit application.
+Medical chatbot implemented using Streamlit.
 
 ```text
 screenshots/streamlit_medical.png
@@ -1664,11 +1848,11 @@ screenshots/streamlit_medical.png
 
 ---
 
-## Mobile Responsive Interface
+# Mobile Responsive Interface
 
-### Mobile Chat
+## Mobile Chat
 
-Responsive chat interface.
+Responsive chatbot interface.
 
 ```text
 screenshots/mobile_chat.png
@@ -1676,9 +1860,9 @@ screenshots/mobile_chat.png
 
 ---
 
-### Mobile Vision
+## Mobile Vision
 
-Responsive vision interface.
+Responsive Vision AI interface.
 
 ```text
 screenshots/mobile_vision.png
@@ -1692,15 +1876,17 @@ The completed system successfully integrates multiple AI technologies into a sin
 
 The chatbot supports:
 
-* General conversation
-* Medical question answering
-* Research assistance
-* Image understanding
-* Voice interaction
-* Sentiment analysis
-* Multilingual communication
-* Dynamic knowledge expansion
-* Retrieval-Augmented Generation
+- General conversation
+- Medical question answering
+- Research assistance
+- Image understanding
+- Image generation
+- Image editing
+- Voice interaction
+- Sentiment analysis
+- Multilingual communication
+- Dynamic knowledge expansion
+- Retrieval-Augmented Generation (RAG)
 
 ---
 
@@ -1712,365 +1898,408 @@ Final indexed knowledge base statistics:
 Medical Q&A Documents      : 16,359
 Research Papers            : 355
 Custom Knowledge Documents : 1
-------------------------------------------------
+-----------------------------------------------
 Total Indexed Documents    : 16,715
 ```
 
-All documents are converted into embeddings and indexed using FAISS.
+All documents are converted into vector embeddings and indexed using FAISS.
 
 ---
 
 # Functional Results
 
-The system successfully performs the following tasks.
-
 ## General Chat
 
-* Natural conversation
-* Context-aware interaction
-* Multi-turn dialogue
+- Natural conversation
+- Context-aware interaction
+- Multi-turn dialogue
 
 ---
 
 ## Medical Assistant
 
-* Medical information retrieval
-* Medical question answering
-* Medical entity recognition
+- Medical information retrieval
+- Medical question answering
+- Medical entity recognition
 
 ---
 
 ## Research Assistant
 
-* Scientific concept explanation
-* Research paper retrieval
-* Research summarization
+- Scientific concept explanation
+- Research paper retrieval
+- Paper search with filters
+- Extractive summarization (TextRank)
+- Keyword extraction (TF-IDF)
+- Category distribution visualization
+- Keyword frequency visualization
+- Concept-map visualization
 
 ---
 
 ## Vision AI
 
-* Image understanding
-* Visual question answering
-* Contextual image interpretation
+- Image understanding (Google Gemini)
+- Text-to-image generation
+- Image editing using text prompts
+- Context-aware visual interpretation
 
 ---
 
 ## Voice Interaction
 
-* Audio recording
-* Speech transcription
-* Voice-enabled chat
+- Audio recording
+- Speech transcription
+- Voice-enabled conversations
 
 ---
 
 ## Dynamic Knowledge Base
 
-* URL ingestion
-* Text ingestion
-* File ingestion
-* PDF ingestion
-* Real-time FAISS updates
+- URL ingestion
+- Text ingestion
+- File ingestion
+- PDF ingestion
+- Real-time FAISS index updates
 
 ---
 
 ## Multilingual Communication
 
-* Language detection
-* Translation
-* Cross-language interaction
+- Language detection
+- Translation
+- Cross-language interaction
 
 ---
 
 ## Sentiment Analysis
 
-* Positive classification
-* Neutral classification
-* Negative classification
-
----
+- Positive classification
+- Neutral classification
+- Negative classification
 
 # Example Use Cases
 
 ## Medical Question Answering
 
-User Query:
+### User Query
 
 ```text
 What are the symptoms of diabetes?
 ```
 
-waterGPT retrieves relevant medical information and generates an educational response discussing:
+waterGPT retrieves relevant medical information and generates an educational response covering:
 
-* Increased thirst
-* Frequent urination
-* Fatigue
-* Blurred vision
-* Unexplained weight loss
+- Increased thirst
+- Frequent urination
+- Fatigue
+- Blurred vision
+- Unexplained weight loss
 
 ---
 
 ## Research Assistant
 
-User Query:
+### User Query
 
 ```text
 Explain Retrieval-Augmented Generation.
 ```
 
-waterGPT retrieves relevant research information and explains:
+waterGPT retrieves relevant research papers and explains:
 
-* Retrieval systems
-* Language models
-* Context injection
-* Knowledge grounding
+- Retrieval systems
+- Large Language Models
+- Context injection
+- Knowledge grounding
+
+### Search Papers Example
+
+```text
+Query: "retrieval"
+Category: "cs.IR"
+```
+
+Returns matching arXiv papers with a **Summarize + Keywords** option for each paper, producing:
+
+- TextRank extractive summary
+- TF-IDF keywords
+
+No LLM is required for this summarization process.
+
+### Visualization Example
+
+The **Visualize** tab renders:
+
+- Category distribution bar chart
+- Top TF-IDF keywords across the corpus
+- 2D concept-map scatter plot (TF-IDF + Truncated SVD)
 
 ---
 
 ## Vision AI
 
-User Query:
+### Understand Example
 
 ```text
-Describe this image.
+Upload an image and ask:
+"Describe this image."
 ```
 
-The uploaded image is analyzed and interpreted using a vision-capable model.
+Google Gemini (`gemini-2.5-flash`) analyzes the uploaded image and provides a detailed explanation.
+
+### Generate Example
+
+```text
+Prompt:
+"A watercolor painting of a mountain lake at sunset"
+```
+
+Google Gemini (`gemini-2.5-flash-image`) generates a brand-new image, which is displayed directly in the chat.
+
+### Edit Example
+
+```text
+Upload an image and instruct:
+"Turn this into a watercolor painting."
+```
+
+Google Gemini returns an edited version of the uploaded image.
 
 ---
 
 ## Voice Interaction
 
-User records audio:
+### User Input
 
 ```text
-What is machine learning?
+What is Machine Learning?
 ```
 
-The system:
+The system performs the following steps:
 
 1. Records audio
-2. Transcribes speech
-3. Processes text
-4. Generates a response
+2. Converts speech to text
+3. Processes the query
+4. Generates an AI response
 
 ---
 
 # Performance Summary
 
-The project demonstrates successful integration of:
+The project successfully integrates:
 
-* Large Language Models
-* Vision Models
-* Voice Models
-* Retrieval Systems
-* Vector Databases
-* Translation Services
-* Sentiment Analysis
+- Large Language Models
+- Vision Models
+- Voice Models
+- Retrieval-Augmented Generation (RAG)
+- Vector Databases
+- Translation Services
+- Sentiment Analysis
 
-The architecture supports future scalability and feature expansion.
+The modular architecture supports scalability and future feature expansion.
 
 ---
 
 # Challenges Faced
 
-Several technical challenges were encountered during development.
+## 1. Large Dataset Processing
 
-## Large Dataset Processing
+The MedQuAD dataset contains thousands of medical documents that require efficient preprocessing and indexing.
 
-The MedQuAD dataset contains thousands of medical documents requiring efficient preprocessing and indexing.
+### Challenges
 
-Challenges:
-
-* Data cleaning
-* Data conversion
-* Embedding generation
-* Index creation
+- Data cleaning
+- Data conversion
+- Embedding generation
+- FAISS index creation
 
 ---
 
-## Retrieval Quality
+## 2. Retrieval Quality
 
-Maintaining retrieval accuracy across different domains required careful chunking and embedding strategies.
+Maintaining retrieval accuracy across multiple domains required careful experimentation.
 
-Challenges:
+### Challenges
 
-* Semantic search quality
-* Chunk sizing
-* Context relevance
+- Semantic search quality
+- Chunk sizing
+- Context relevance
 
 ---
 
-## Multi-Domain Knowledge
+## 3. Multi-Domain Knowledge
 
 The chatbot combines:
 
-* Medical knowledge
-* Research knowledge
-* User-generated knowledge
+- Medical knowledge
+- Research knowledge
+- User-generated knowledge
 
-Balancing retrieval quality across domains required additional experimentation.
+Balancing retrieval quality across these domains required additional tuning.
 
 ---
 
-## Multilingual Processing
+## 4. Multilingual Processing
 
 Supporting multiple languages introduced challenges related to:
 
-* Translation quality
-* Language detection
-* Response consistency
+- Translation quality
+- Language detection
+- Response consistency
 
 ---
 
-## Vision Integration
+## 5. Vision Integration
 
 Image processing required:
 
-* Image encoding
-* API communication
-* Visual prompt construction
+- Image encoding
+- Google Gemini API integration
+- Prompt engineering
+- Image storage and retrieval
+- Billing-aware image generation workflow
 
 ---
 
-## Voice Processing
+## 6. Voice Processing
 
 Voice transcription required:
 
-* Browser compatibility
-* Audio conversion
-* Speech recognition integration
+- Browser compatibility
+- Audio conversion
+- Speech recognition integration
 
 ---
 
-## Responsive Frontend Design
+## 7. Responsive Frontend Design
 
-Creating a consistent user experience across:
+Developing a consistent experience across:
 
-* Desktop
-* Tablet
-* Mobile devices
+- Desktop
+- Tablet
+- Mobile
 
-required significant UI optimization.
+required extensive UI optimization.
 
 ---
 
 # Learning Outcomes
 
-The project provided practical experience in several areas of Artificial Intelligence and Software Engineering.
-
-Key learning outcomes include:
+This project provided practical experience in several AI and software engineering domains.
 
 ## Artificial Intelligence
 
-* Large Language Models
-* Vision Models
-* Prompt Engineering
-* Multi-modal AI
-* AI Application Design
+- Large Language Models
+- Vision Models
+- Prompt Engineering
+- Multi-modal AI
+- AI Application Design
 
 ---
 
 ## Natural Language Processing
 
-* Semantic Search
-* Language Detection
-* Translation Systems
-* Sentiment Analysis
-* Medical NLP
+- Semantic Search
+- Language Detection
+- Translation Systems
+- Sentiment Analysis
+- Medical NLP
 
 ---
 
 ## Retrieval-Augmented Generation
 
-* Document Processing
-* Text Chunking
-* Embedding Generation
-* Vector Databases
-* Context Retrieval
+- Document Processing
+- Text Chunking
+- Embedding Generation
+- Vector Databases
+- Context Retrieval
 
 ---
 
 ## Backend Development
 
-* FastAPI
-* REST APIs
-* Service Architecture
-* Data Processing Pipelines
+- FastAPI
+- REST APIs
+- Service-Oriented Architecture
+- Data Processing Pipelines
 
 ---
 
 ## Frontend Development
 
-* Next.js
-* React
-* Responsive Design
-* State Management
-* API Integration
+- Next.js
+- React
+- Responsive Design
+- State Management
+- API Integration
 
 ---
 
 ## Data Engineering
 
-* Dataset Preparation
-* Data Cleaning
-* Index Construction
-* Knowledge Management
-
----
+- Dataset Preparation
+- Data Cleaning
+- FAISS Index Construction
+- Knowledge Management
 
 # Future Improvements
 
 Several enhancements can further improve the project.
 
+---
+
 ## AI Improvements
 
-* Image generation
-* Tool calling
-* Web search integration
-* Advanced reasoning workflows
+- Tool calling support
+- Web search integration
+- Advanced reasoning workflows
+- Multi-turn conversational image editing (iterative refinement)
 
 ---
 
 ## Medical Improvements
 
-* Biomedical NER models
-* Drug interaction analysis
-* Medical knowledge expansion
+- Biomedical Named Entity Recognition (NER) models
+- Drug interaction analysis
+- Expanded medical knowledge base
 
 ---
 
 ## Research Improvements
 
-* Additional arXiv categories
-* Research paper recommendations
-* Citation extraction
+- Additional arXiv categories
+- Research paper recommendations
+- Citation extraction
+- Abstractive (LLM-assisted) summarization alongside TextRank
+- Interactive concept-map filtering by category
 
 ---
 
 ## Knowledge Base Improvements
 
-* Incremental indexing
-* Document versioning
-* Advanced search filters
+- Incremental indexing
+- Document versioning
+- Advanced search filters
 
 ---
 
 ## User Experience Improvements
 
-* User authentication
-* User profiles
-* Chat history storage
-* Theme customization
+- User authentication
+- User profiles
+- Chat history storage
+- Theme customization
 
 ---
 
 ## Deployment Improvements
 
-* Cloud deployment
-* Docker support
-* CI/CD pipelines
-* Monitoring dashboards
+- Cloud deployment
+- Docker support
+- CI/CD pipelines
+- Monitoring dashboards
 
 ---
 
@@ -2078,16 +2307,16 @@ Several enhancements can further improve the project.
 
 This project demonstrates:
 
-* Full-stack AI development
-* Retrieval-Augmented Generation
-* Multi-modal AI integration
-* Medical AI applications
-* Research assistance systems
-* Voice-enabled AI interaction
-* Multilingual chatbot design
-* Dynamic knowledge management
-* Modern frontend development
-* Production-style backend architecture
+- Full-stack AI development
+- Retrieval-Augmented Generation (RAG)
+- Multi-modal AI integration
+- Medical AI applications
+- Research assistance systems
+- Voice-enabled AI interaction
+- Multilingual chatbot design
+- Dynamic knowledge management
+- Modern frontend development
+- Production-style backend architecture
 
 ---
 
@@ -2097,17 +2326,11 @@ This project demonstrates:
 
 ### MedQuAD
 
-```text
 https://github.com/abachaa/MedQuAD
-```
-
----
 
 ### arXiv API
 
-```text
 https://arxiv.org/help/api
-```
 
 ---
 
@@ -2115,63 +2338,61 @@ https://arxiv.org/help/api
 
 ### FastAPI
 
-```text
 https://fastapi.tiangolo.com
-```
-
----
 
 ### Next.js
 
-```text
 https://nextjs.org
-```
-
----
 
 ### FAISS
 
-```text
 https://github.com/facebookresearch/faiss
-```
-
----
 
 ### SentenceTransformers
 
-```text
 https://www.sbert.net
-```
-
----
 
 ### Groq
 
-```text
 https://groq.com
-```
+
+### Google Gemini API
+
+https://ai.google.dev/gemini-api/docs
+
+### scikit-learn
+
+https://scikit-learn.org
 
 ---
 
 # Conclusion
 
-waterGPT demonstrates the successful integration of Retrieval-Augmented Generation, Medical Question Answering, Research Assistance, Image Understanding, Voice Processing, Sentiment Analysis, and Multilingual Communication within a single AI platform.
+waterGPT demonstrates the successful integration of Retrieval-Augmented Generation (RAG), Medical Question Answering, arXiv Research Assistance (search, extractive summarization, and concept visualization), Google Gemini-powered Multi-Modal Interaction (image understanding, generation, and editing), Voice Processing, Sentiment Analysis, and Multilingual Communication within a unified AI platform.
 
-The project fulfills all internship requirements while extending beyond them through the inclusion of a production-style frontend, modular backend architecture, and scalable knowledge retrieval system.
+The project fulfills all internship requirements while extending beyond them through:
 
-The final system combines modern AI techniques with practical software engineering principles, providing a strong foundation for future expansion and deployment.
+- A production-style Next.js frontend
+- A modular FastAPI backend
+- Standalone NLP techniques (TF-IDF, TextRank, Truncated SVD)
+- Bidirectional multi-modal AI using Google Gemini
+- A scalable Retrieval-Augmented Generation pipeline powered by FAISS
+
+The final system combines modern AI techniques with sound software engineering principles, providing a strong foundation for future research, development, and real-world deployment.
 
 ---
 
 # Author
 
 **Vinayak Varshith Reddy Vangeti**
+
 AI/ML Intern
+
 Elevance Skills Internship
 
-Email: [varshithreddyy6@gmail.com](mailto:varshithreddyy6@gmail.com)
+**Email:** varshithreddyy6@gmail.com
 
-Project: waterGPT — Multi-Modal, Multilingual RAG Chatbot
+**Project:** waterGPT — Multi-Modal, Multilingual RAG Chatbot
 
 ---
 
@@ -2179,6 +2400,7 @@ Project: waterGPT — Multi-Modal, Multilingual RAG Chatbot
 
 The medical assistant included in this project is intended solely for educational and informational purposes.
 
-The system should not be considered a substitute for professional medical advice, diagnosis, or treatment.
+It should **not** be considered a substitute for professional medical advice, diagnosis, or treatment.
 
-Users should always consult qualified healthcare professionals regarding medical concerns.
+Users should always consult qualified healthcare professionals regarding medical concerns before making medical decisions.
+
