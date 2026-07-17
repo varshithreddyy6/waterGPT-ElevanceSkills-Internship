@@ -2,8 +2,7 @@ import io
 
 from PIL import Image
 
-from core.groq_client import client
-from core.state import image_handler, translator
+from core.state import translator, gemini_vision
 
 
 def analyze_image(
@@ -23,11 +22,7 @@ def analyze_image(
             f"New question: {question}"
         )
 
-    answer = image_handler.describe_image_with_groq(
-        client,
-        image,
-        final_prompt,
-    )
+    answer = gemini_vision.describe_image(image, final_prompt)
 
     if target_language != "en":
         answer = translator.translate_from_english(
@@ -37,5 +32,37 @@ def analyze_image(
 
     return {
         "answer": answer,
-        "model": "Groq Vision",
+        "model": "Google Gemini (gemini-2.5-flash)",
+    }
+
+
+def generate_image_from_text(prompt: str, target_language="en"):
+    result = gemini_vision.generate_image(prompt)
+
+    caption = result.get("text") or "Here is the image I generated."
+
+    if target_language != "en":
+        caption = translator.translate_from_english(caption, target_language)
+
+    return {
+        "answer": caption,
+        "image_url": result["url"],
+        "model": "Google Gemini (gemini-2.5-flash-image)",
+    }
+
+
+def edit_image_with_text(image_bytes: bytes, prompt: str, target_language="en"):
+    image = Image.open(io.BytesIO(image_bytes))
+
+    result = gemini_vision.edit_image(image, prompt)
+
+    caption = result.get("text") or "Here is your edited image."
+
+    if target_language != "en":
+        caption = translator.translate_from_english(caption, target_language)
+
+    return {
+        "answer": caption,
+        "image_url": result["url"],
+        "model": "Google Gemini (gemini-2.5-flash-image)",
     }

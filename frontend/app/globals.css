@@ -2885,3 +2885,333 @@ body {
     min-width: calc(100vw - 56px);
   }
 }
+
+/* ============================================================
+   Vision AI mode toggle (Understand / Generate / Edit) + images
+   ============================================================ */
+
+.mode-toggle-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.mode-toggle-btn {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-toggle-btn:hover {
+  border-color: #ffffff;
+}
+
+.mode-toggle-btn.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.generated-image-wrap {
+  max-width: 1180px;
+  margin: 12px auto 24px;
+}
+
+.generated-image {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  border: 1px solid #333333;
+}
+
+/* ============================================================
+   Research Assistant: paper search + concept visualization
+   ============================================================ */
+
+.research-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.research-search-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.research-search-form input {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+.research-search-form button {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 12px 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.paper-card {
+  border: 1px solid #222222;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.paper-card-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.paper-card-meta {
+  color: #999999;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.paper-card-abstract {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.paper-card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paper-card-actions button {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.paper-summary-box {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #333333;
+}
+
+.keyword-chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.keyword-chip {
+  border: 1px solid #444444;
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #dddddd;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .research-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Vision AI mode toggle (Understand / Generate / Edit) + images
+   ============================================================ */
+
+.mode-toggle-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.mode-toggle-btn {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mode-toggle-btn:hover {
+  border-color: #ffffff;
+}
+
+.mode-toggle-btn.active {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.generated-image-wrap {
+  max-width: 1180px;
+  margin: 12px auto 24px;
+}
+
+.generated-image {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  border: 1px solid #333333;
+}
+
+/* ============================================================
+   Research Assistant: paper search + concept visualization
+   ============================================================ */
+
+.research-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.research-search-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.research-search-form input {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+.research-search-form button {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 12px 20px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.paper-card {
+  border: 1px solid #222222;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.paper-card-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.paper-card-meta {
+  color: #999999;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.paper-card-abstract {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.paper-card-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.paper-card-actions button {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.paper-summary-box {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #333333;
+}
+
+.keyword-chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.keyword-chip {
+  border: 1px solid #444444;
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #dddddd;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .research-search-form {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -9,6 +9,7 @@ from api.knowledge import router as knowledge_router
 from api.analytics import router as analytics_router
 from api.settings import router as settings_router
 from api.voice import router as voice_router
+from api.research import router as research_router
 
 
 app = FastAPI(
@@ -32,6 +33,7 @@ app.include_router(knowledge_router)
 app.include_router(analytics_router)
 app.include_router(settings_router)
 app.include_router(voice_router)
+app.include_router(research_router)
 
 
 @app.get("/")

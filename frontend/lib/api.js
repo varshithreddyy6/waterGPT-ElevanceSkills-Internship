@@ -151,3 +151,102 @@ export async function transcribeVoice(audioBlob) {
 
   return parseResponse(res);
 }
+
+// --- Gemini image generation / editing (Multi-Modal Chatbot task) ---
+
+export async function generateImage({ prompt, targetLanguage = "en" }) {
+  const API_BASE = getApiBase();
+
+  const res = await fetch(`${API_BASE}/vision/generate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ prompt, target_language: targetLanguage }),
+  });
+
+  const data = await parseResponse(res);
+
+  return {
+    ...data,
+    image_url: `${API_BASE}${data.image_url}`,
+  };
+}
+
+export async function editImage({ image, prompt, targetLanguage = "en" }) {
+  const API_BASE = getApiBase();
+
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("prompt", prompt);
+  formData.append("target_language", targetLanguage);
+
+  const res = await fetch(`${API_BASE}/vision/edit`, {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await parseResponse(res);
+
+  return {
+    ...data,
+    image_url: `${API_BASE}${data.image_url}`,
+  };
+}
+
+// --- arXiv Research Assistant: search, summarize, visualize ---
+
+export async function searchPapers({ query = "", category = "", author = "", limit = 20 }) {
+  const API_BASE = getApiBase();
+
+  const params = new URLSearchParams({ query, category, author, limit });
+
+  const res = await fetch(`${API_BASE}/research/search?${params.toString()}`, {
+    cache: "no-store",
+  });
+
+  return parseResponse(res);
+}
+
+export async function summarizePaper(paperId, numSentences = 3) {
+  const API_BASE = getApiBase();
+
+  const res = await fetch(
+    `${API_BASE}/research/paper/${encodeURIComponent(paperId)}/summary?num_sentences=${numSentences}`,
+    { cache: "no-store" }
+  );
+
+  return parseResponse(res);
+}
+
+export async function getCategoryDistribution() {
+  const API_BASE = getApiBase();
+
+  const res = await fetch(`${API_BASE}/research/visualization/categories`, {
+    cache: "no-store",
+  });
+
+  return parseResponse(res);
+}
+
+export async function getTopKeywords(topN = 20) {
+  const API_BASE = getApiBase();
+
+  const res = await fetch(
+    `${API_BASE}/research/visualization/keywords?top_n=${topN}`,
+    { cache: "no-store" }
+  );
+
+  return parseResponse(res);
+}
+
+export async function getConceptMap(maxPoints = 150) {
+  const API_BASE = getApiBase();
+
+  const res = await fetch(
+    `${API_BASE}/research/visualization/concept-map?max_points=${maxPoints}`,
+    { cache: "no-store" }
+  );
+
+  return parseResponse(res);
+}

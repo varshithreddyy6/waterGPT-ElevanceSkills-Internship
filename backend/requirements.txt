@@ -2,12 +2,14 @@ fastapi
 uvicorn[standard]
 python-dotenv
 groq
+google-genai
 pydantic
 python-multipart
 pandas
 numpy
 faiss-cpu
 sentence-transformers
+scikit-learn
 pillow
 requests
 beautifulsoup4
