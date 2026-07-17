@@ -2,6 +2,7 @@ import io
 import requests
 from datetime import datetime
 
+import pandas as pd
 import streamlit as st
 
 
@@ -397,9 +398,9 @@ if page == "Overview":
 
     tasks = [
         ("01", "Dynamic Knowledge Base", "URL, text, and file ingestion with FAISS updates"),
-        ("02", "Multi-modal Chatbot", "Image understanding using Groq vision model"),
+        ("02", "Multi-modal Chatbot", "Image understanding + generation using Google Gemini"),
         ("03", "Medical Q&A", "MedQuAD-based retrieval augmented medical chatbot"),
-        ("04", "Research Assistant", "arXiv paper retrieval and scientific explanation"),
+        ("04", "Research Assistant", "arXiv search, TextRank summarization, concept visualization"),
         ("05", "Sentiment Analysis", "VADER sentiment detection and adaptive response tone"),
         ("06", "Multilingual Support", "Language detection and translation support"),
     ]
@@ -493,11 +494,113 @@ if page == "Medical Q&A":
 
 
 if page == "Research Assistant":
-    render_chat_page(
-        mode="research",
-        title="arXiv Research Assistant",
-        placeholder="Ask about research papers, AI, ML, NLP, or scientific concepts...",
+    st.markdown('<div class="section-title">arXiv Research Assistant</div>', unsafe_allow_html=True)
+
+    research_tab = st.radio(
+        "View",
+        ["Ask", "Search Papers", "Visualize"],
+        horizontal=True,
+        key="research_tab",
     )
+
+    if research_tab == "Ask":
+        render_chat_page(
+            mode="research",
+            title="",
+            placeholder="Ask about research papers, AI, ML, NLP, or scientific concepts...",
+        )
+
+    elif research_tab == "Search Papers":
+        st.write("Search the indexed arXiv corpus by keyword, category, or author.")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            search_query = st.text_input("Keyword", placeholder="e.g. transformers, RAG")
+        with col2:
+            search_category = st.text_input("Category", placeholder="e.g. cs.AI")
+        with col3:
+            search_author = st.text_input("Author", placeholder="e.g. Yoshua Bengio")
+
+        if st.button("Search Papers"):
+            with st.spinner("Searching arXiv corpus..."):
+                try:
+                    params = f"?query={search_query}&category={search_category}&author={search_author}&limit=20"
+                    result = api_get(f"/research/search{params}")
+                    st.session_state.research_results = result.get("results", [])
+                except Exception as e:
+                    st.error(f"Search error: {e}")
+                    st.session_state.research_results = []
+
+        results = st.session_state.get("research_results", [])
+
+        if results:
+            st.caption(f"{len(results)} paper(s) found")
+
+            for paper in results:
+                with st.container(border=True):
+                    st.markdown(f"**{paper['title']}**")
+                    st.caption(f"{paper['primary_category']} · {paper['authors'][:120]}")
+                    st.write(paper["abstract"][:400] + ("…" if len(paper["abstract"]) > 400 else ""))
+
+                    col_a, col_b = st.columns([1, 1])
+
+                    with col_a:
+                        if st.button("Summarize + Keywords", key=f"sum_{paper['id']}"):
+                            try:
+                                summary_data = api_get(
+                                    f"/research/paper/{paper['id']}/summary?num_sentences=3"
+                                )
+                                st.markdown("**Extractive Summary (TextRank):**")
+                                st.write(summary_data.get("summary", ""))
+                                st.markdown("**Keywords (TF-IDF):**")
+                                st.write(", ".join(summary_data.get("keywords", [])))
+                            except Exception as e:
+                                st.error(f"Summarization error: {e}")
+
+                    with col_b:
+                        if paper.get("link"):
+                            st.markdown(f"[View on arXiv]({paper['link']})")
+
+    else:  # Visualize
+        st.write("Concept visualization computed from the indexed arXiv corpus.")
+
+        try:
+            cat_data = api_get("/research/visualization/categories").get("data", [])
+            keyword_data = api_get("/research/visualization/keywords?top_n=15").get("data", [])
+            concept_data = api_get("/research/visualization/concept-map?max_points=150")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.markdown("**Papers per Category**")
+                if cat_data:
+                    cat_df = pd.DataFrame(cat_data).set_index("category")
+                    st.bar_chart(cat_df)
+
+            with col2:
+                st.markdown("**Top Corpus Keywords (TF-IDF)**")
+                if keyword_data:
+                    kw_df = pd.DataFrame(keyword_data).set_index("term")
+                    st.bar_chart(kw_df)
+
+            st.markdown("**Concept Map (TF-IDF + SVD Projection)**")
+
+            points = concept_data.get("points", [])
+
+            if points:
+                concept_df = pd.DataFrame(points)
+                st.scatter_chart(
+                    concept_df,
+                    x="x",
+                    y="y",
+                    color="category",
+                )
+            else:
+                st.info("Not enough indexed papers to build a concept map yet.")
+
+        except Exception as e:
+            st.error(f"Visualization error: {e}")
 
 
 # ============================================================
@@ -506,50 +609,154 @@ if page == "Research Assistant":
 
 if page == "Vision AI":
     st.markdown('<div class="section-title">Vision AI</div>', unsafe_allow_html=True)
+    st.caption("Powered by Google Gemini — image understanding and image generation.")
 
-    st.write("Upload an image and ask a question about it.")
-
-    uploaded_image = st.file_uploader(
-        "Upload Image",
-        type=["png", "jpg", "jpeg", "webp"],
+    vision_mode = st.radio(
+        "Mode",
+        ["Understand Image", "Generate Image", "Edit Image"],
+        horizontal=True,
     )
 
-    question = st.text_input(
-        "Question about image",
-        placeholder="Describe this image...",
-    )
+    # --------------------------------------------------------
+    # UNDERSTAND: image -> text (Gemini vision)
+    # --------------------------------------------------------
+    if vision_mode == "Understand Image":
+        st.write("Upload an image and ask a question about it.")
 
-    if uploaded_image:
-        st.image(uploaded_image, width=500)
+        uploaded_image = st.file_uploader(
+            "Upload Image",
+            type=["png", "jpg", "jpeg", "webp"],
+            key="understand_uploader",
+        )
 
-    if st.button("Analyze Image"):
-        if not uploaded_image:
-            st.warning("Please upload an image first.")
-        elif not question.strip():
-            st.warning("Please enter a question.")
-        else:
-            with st.spinner("Analyzing image..."):
-                try:
-                    files = {
-                        "image": (
-                            uploaded_image.name,
-                            uploaded_image.getvalue(),
-                            uploaded_image.type,
-                        )
-                    }
+        question = st.text_input(
+            "Question about image",
+            placeholder="Describe this image...",
+        )
 
-                    data = {
-                        "question": question,
-                        "target_language": st.session_state.target_language,
-                    }
+        if uploaded_image:
+            st.image(uploaded_image, width=500)
 
-                    result = api_post_file("/vision", files=files, data=data)
+        if st.button("Analyze Image"):
+            if not uploaded_image:
+                st.warning("Please upload an image first.")
+            elif not question.strip():
+                st.warning("Please enter a question.")
+            else:
+                with st.spinner("Analyzing image with Gemini..."):
+                    try:
+                        files = {
+                            "image": (
+                                uploaded_image.name,
+                                uploaded_image.getvalue(),
+                                uploaded_image.type,
+                            )
+                        }
 
-                    st.markdown('<div class="chat-bot-title">waterGPT Vision</div>', unsafe_allow_html=True)
-                    st.markdown(result.get("answer", ""))
+                        data = {
+                            "question": question,
+                            "target_language": st.session_state.target_language,
+                        }
 
-                except Exception as e:
-                    st.error(f"Vision error: {e}")
+                        result = api_post_file("/vision", files=files, data=data)
+
+                        st.markdown('<div class="chat-bot-title">waterGPT Vision</div>', unsafe_allow_html=True)
+                        st.markdown(result.get("answer", ""))
+                        st.caption(f"Model: {result.get('model', 'Google Gemini')}")
+
+                    except Exception as e:
+                        st.error(f"Vision error: {e}")
+
+    # --------------------------------------------------------
+    # GENERATE: text -> image (Gemini image generation)
+    # --------------------------------------------------------
+    elif vision_mode == "Generate Image":
+        st.write("Describe an image and Gemini will generate it for you.")
+
+        gen_prompt = st.text_area(
+            "Image prompt",
+            placeholder="A watercolor painting of a mountain lake at sunset...",
+        )
+
+        if st.button("Generate Image"):
+            if not gen_prompt.strip():
+                st.warning("Please enter a prompt describing the image.")
+            else:
+                with st.spinner("Generating image with Gemini..."):
+                    try:
+                        payload = {
+                            "prompt": gen_prompt,
+                            "target_language": st.session_state.target_language,
+                        }
+
+                        result = api_post_json("/vision/generate", payload)
+
+                        st.markdown('<div class="chat-bot-title">waterGPT Vision</div>', unsafe_allow_html=True)
+                        st.markdown(result.get("answer", ""))
+
+                        image_url = result.get("image_url", "")
+                        if image_url:
+                            st.image(f"{API_BASE}{image_url}", width=500)
+
+                        st.caption(f"Model: {result.get('model', 'Google Gemini')}")
+
+                    except Exception as e:
+                        st.error(f"Image generation error: {e}")
+
+    # --------------------------------------------------------
+    # EDIT: image + text -> image (Gemini image editing)
+    # --------------------------------------------------------
+    else:
+        st.write("Upload an image and describe how you want it transformed.")
+
+        edit_image_file = st.file_uploader(
+            "Upload Image",
+            type=["png", "jpg", "jpeg", "webp"],
+            key="edit_uploader",
+        )
+
+        edit_prompt = st.text_input(
+            "Edit instruction",
+            placeholder="Turn this into a watercolor painting...",
+        )
+
+        if edit_image_file:
+            st.image(edit_image_file, width=400)
+
+        if st.button("Edit Image"):
+            if not edit_image_file:
+                st.warning("Please upload an image first.")
+            elif not edit_prompt.strip():
+                st.warning("Please enter an edit instruction.")
+            else:
+                with st.spinner("Editing image with Gemini..."):
+                    try:
+                        files = {
+                            "image": (
+                                edit_image_file.name,
+                                edit_image_file.getvalue(),
+                                edit_image_file.type,
+                            )
+                        }
+
+                        data = {
+                            "prompt": edit_prompt,
+                            "target_language": st.session_state.target_language,
+                        }
+
+                        result = api_post_file("/vision/edit", files=files, data=data)
+
+                        st.markdown('<div class="chat-bot-title">waterGPT Vision</div>', unsafe_allow_html=True)
+                        st.markdown(result.get("answer", ""))
+
+                        image_url = result.get("image_url", "")
+                        if image_url:
+                            st.image(f"{API_BASE}{image_url}", width=500)
+
+                        st.caption(f"Model: {result.get('model', 'Google Gemini')}")
+
+                    except Exception as e:
+                        st.error(f"Image editing error: {e}")
 
 
 # ============================================================
