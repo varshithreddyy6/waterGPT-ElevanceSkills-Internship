@@ -1,0 +1,31 @@
+study:
+  title: "Evaluating Lexical, Dense, and Hybrid Retrieval Methods for Scientific Literature Search"
+  seed: 2026
+  dataset: "BEIR SciFact"
+  split: test
+retrieval:
+  document_fields: title_abstract
+  candidate_depth: 1000
+  final_depth: 100
+bm25:
+  implementation: rank_bm25.BM25Okapi
+  k1: 1.5
+  b: 0.75
+  tokenizer: lowercase alphanumeric regex shared for queries/documents
+dense:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  device: null
+  batch_size: 64
+  similarity: cosine via L2 normalized float32 vectors and FAISS IndexFlatIP
+  cache: data/cache
+rrf:
+  k: 60
+statistics:
+  seed: 2026
+  bootstrap_resamples: 10000
+  confidence: 0.95
+latency:
+  warmup_queries: 10
+  repeats: 3
+error_analysis:
+  example_limit: 50

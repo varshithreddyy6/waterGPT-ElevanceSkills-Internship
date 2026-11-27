@@ -1,0 +1,7 @@
+data/raw/*
+!data/raw/.gitkeep
+data/cache/
+*.npz
+*.faiss
+__pycache__/
+.pytest_cache/

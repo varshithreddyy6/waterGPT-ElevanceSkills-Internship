@@ -1,9 +1,10 @@
 import os
 
-# Force Hugging Face / Transformers to use local cache.
-# This prevents backend startup from failing when internet is unstable.
-os.environ.setdefault("HF_HUB_OFFLINE", "1")
-os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+# Online model download is allowed by default so fresh installations can obtain
+# the configured embedding model. Set WATERGPT_OFFLINE=1 to require local cache.
+if os.environ.get("WATERGPT_OFFLINE", "").strip().lower() in {"1", "true", "yes"}:
+    os.environ.setdefault("HF_HUB_OFFLINE", "1")
+    os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
 
 import pickle
 
@@ -36,8 +37,8 @@ class RAGEngine:
             self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
             print("Embedding model loaded")
         except Exception as e:
-            print(f"Offline model loading failed: {e}")
-            print("Trying normal model loading...")
+            print(f"Local-cache model loading failed: {e}")
+            print("Trying normal model loading (may download model files)...")
             self.embedding_model = SentenceTransformer(EMBEDDING_MODEL)
 
         self.load_index()

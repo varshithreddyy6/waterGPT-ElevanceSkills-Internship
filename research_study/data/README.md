@@ -1,0 +1,5 @@
+# Dataset storage
+
+The official BEIR SciFact archive is downloaded to `data/raw/` by `python scripts/download_dataset.py`. Raw benchmark files and derived embedding caches are intentionally excluded from Git. Dataset records, source URLs, split counts, and SHA-256 checksums are written to `results/metadata/dataset.json` after validation.
+
+SciFact is a scientific claim-verification/evidence retrieval dataset. Its queries are claims and its documents are abstracts; it is not a representative sample of all scientific literature or a general-purpose arXiv corpus. License metadata differs across distributions: the upstream [SciFact dataset metadata](https://huggingface.co/datasets/allenai/scifact) identifies CC BY-NC 2.0, whereas the [BEIR SciFact dataset card](https://huggingface.co/datasets/BeIR/scifact) lists CC BY-SA 4.0. Review the applicable original source terms before use and avoid redistributing the downloaded corpus from this project. The experiment attributes the data to Wadden et al. (2020) and BEIR/Thakur et al. (2021).

@@ -1,0 +1,50 @@
+{
+  "BM25": {
+    "local_macro_metrics": {
+      "ndcg@10": 0.6318197580638981,
+      "mrr@10": 0.5959325396825397,
+      "recall@10": 0.7598333333333332,
+      "recall@100": 0.856388888888889
+    },
+    "beir_reference": {
+      "ndcg@10": 0.63182,
+      "recall@10": 0.75983,
+      "recall@100": 0.85639
+    },
+    "absolute_tolerance": 0.0001,
+    "score_mapping": "strictly descending ordinal scores preserve the saved deterministic ranking order, including tie-breaks",
+    "status": "passed"
+  },
+  "Dense": {
+    "local_macro_metrics": {
+      "ndcg@10": 0.6450816521455776,
+      "mrr@10": 0.6047248677248678,
+      "recall@10": 0.7833333333333333,
+      "recall@100": 0.925
+    },
+    "beir_reference": {
+      "ndcg@10": 0.64508,
+      "recall@10": 0.78333,
+      "recall@100": 0.925
+    },
+    "absolute_tolerance": 0.0001,
+    "score_mapping": "strictly descending ordinal scores preserve the saved deterministic ranking order, including tie-breaks",
+    "status": "passed"
+  },
+  "Hybrid RRF": {
+    "local_macro_metrics": {
+      "ndcg@10": 0.6683646542974798,
+      "mrr@10": 0.6345013227513228,
+      "recall@10": 0.7937777777777778,
+      "recall@100": 0.955
+    },
+    "beir_reference": {
+      "ndcg@10": 0.66836,
+      "recall@10": 0.79378,
+      "recall@100": 0.955
+    },
+    "absolute_tolerance": 0.0001,
+    "score_mapping": "strictly descending ordinal scores preserve the saved deterministic ranking order, including tie-breaks",
+    "status": "passed"
+  }
+}

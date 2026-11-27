@@ -1,0 +1,39 @@
+{
+  "run_id": "scifact-primary",
+  "dataset": "BEIR SciFact",
+  "split": "test",
+  "query_count": 300,
+  "corpus_count": 5183,
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "model_max_sequence_length": 256,
+  "model_truncation": "Inputs exceeding the loaded SentenceTransformer max_seq_length are truncated by the model tokenizer.",
+  "candidate_depth": 1000,
+  "document_fields": "title_abstract",
+  "rrf_k": 60,
+  "python": "3.13.18 (main, Nov  5 2026, 09:37:13) [GCC 14.2.0]",
+  "platform": "Linux-6.1.189+-x86_64-with-glibc2.41",
+  "processor": "",
+  "cpu_count": 2,
+  "memory_bytes": 2079145984,
+  "gpu": {
+    "available": false,
+    "device_name": null
+  },
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "packages": {
+    "rank-bm25": "0.2.2",
+    "sentence-transformers": "5.1.2",
+    "faiss-cpu": "1.12.0",
+    "beir": "2.2.0",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.7.2",
+    "torch": "2.9.1+cpu",
+    "matplotlib": "3.10.7"
+  },
+  "device": "cpu",
+  "timing_note": "Single-query retrieval; model and document index builds timed separately. Query latency includes component query embedding and ranking; hybrid includes both ranked lists and fusion. Warm-ups are not counted in steady-state summary."
+}

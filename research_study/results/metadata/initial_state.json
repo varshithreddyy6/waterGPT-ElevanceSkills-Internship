@@ -1,0 +1,16 @@
+{
+  "base_branch": "main",
+  "base_commit": "04d28a7",
+  "base_commit_full": "04d28a7628098bb4c0412e5f1afcd19a93469604",
+  "initial_working_tree": "clean",
+  "preservation_branch": "research/scifact-retrieval-study",
+  "frontend_and_legacy_tracked_file_count": 52,
+  "baseline_checksum_manifest": "ui_baseline.sha256",
+  "baseline_screenshots": {
+    "screenshots/home.png": "9d22e0250f386a568ec403bf824cc32adb3a892b72424bd95a5045cf80a7cd25",
+    "screenshots/chat.png": "95db5ab0728419e3d7fdbc335778ebefae3a7911abc12c7e745fbd856b4566e1",
+    "screenshots/research.png": "54415372f8c5f4b39c302b1488fc02bea63ff67ab52a242e3509ea9a5b56d0b3",
+    "screenshots/streamlit_overview.png": "689c8ee953769f6f1fbf46d45dd7241d3197d994f5bf48f214634367583c8401"
+  },
+  "screenshot_note": "Hashes reference pre-existing repository screenshots; no frontend source, pages, styles, static assets, or dependencies were edited."
+}

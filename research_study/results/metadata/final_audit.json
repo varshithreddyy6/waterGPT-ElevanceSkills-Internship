@@ -1,0 +1,57 @@
+{
+  "dataset_documents": 5183,
+  "test_queries": 300,
+  "positive_qrels": 339,
+  "systems": {
+    "BM25": {
+      "per_query_rows": 300,
+      "run_query_ids": 300,
+      "candidate_depths": [
+        1000
+      ],
+      "ranking_doc_ids_valid": true,
+      "aggregate_metrics": {
+        "ndcg@10": 0.6318197580638981,
+        "mrr@10": 0.5959325396825397,
+        "recall@10": 0.7598333333333332,
+        "recall@100": 0.856388888888889
+      }
+    },
+    "Dense": {
+      "per_query_rows": 300,
+      "run_query_ids": 300,
+      "candidate_depths": [
+        1000
+      ],
+      "ranking_doc_ids_valid": true,
+      "aggregate_metrics": {
+        "ndcg@10": 0.6450816521455776,
+        "mrr@10": 0.6047248677248678,
+        "recall@10": 0.7833333333333333,
+        "recall@100": 0.925
+      }
+    },
+    "Hybrid RRF": {
+      "per_query_rows": 300,
+      "run_query_ids": 300,
+      "candidate_depths": [
+        1000
+      ],
+      "ranking_doc_ids_valid": true,
+      "aggregate_metrics": {
+        "ndcg@10": 0.6683646542974798,
+        "mrr@10": 0.6345013227513228,
+        "recall@10": 0.7937777777777778,
+        "recall@100": 0.955
+      }
+    }
+  },
+  "paired_comparisons": 12,
+  "holm_families_checked": 4,
+  "plots_checked": 7,
+  "report_metric_table_matches_csv": true,
+  "references_checked": "SciFact, BEIR, RRF, FAISS, BM25; presentation has 8 slides",
+  "powerpoint_slides": 8,
+  "primary_config_fixed_test_not_used_for_tuning": true,
+  "status": "passed"
+}

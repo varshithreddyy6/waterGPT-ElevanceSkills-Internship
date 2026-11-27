@@ -1,0 +1,50 @@
+{
+  "verification_date_local": "2026-11-26",
+  "repository": {
+    "base_branch": "main",
+    "base_commit": "04d28a7",
+    "work_branch": "research/scifact-retrieval-study",
+    "downloaded_snapshot_had_git_metadata": false,
+    "conflict_markers_found": 0,
+    "downloaded_copy_deletions_restored_from_main": [
+      "backend/data/intents.json",
+      "backend/storage/faiss_index/documents.pkl",
+      "backend/storage/faiss_index/index.faiss"
+    ],
+    "frontend_and_streamlit_source_changes": false,
+    "raw_dataset_and_embedding_cache_staged": false
+  },
+  "research_benchmark": {
+    "dataset_integrity": "passed",
+    "documents": 5183,
+    "test_queries": 300,
+    "positive_qrels": 339,
+    "primary_experiments": "completed for BM25, dense, and RRF hybrid",
+    "same_query_ids_and_1000_candidates": "verified for all three systems",
+    "beir_ndcg_recall_parity": "passed for all three primary methods",
+    "paired_comparisons": "12 comparisons; 10,000 paired bootstrap resamples; Holm correction verified for all four metric families",
+    "plots": "all seven files verified against their generated source artifacts",
+    "report_csv_consistency": "reported comparative metrics match generated CSV",
+    "powerpoint": "editable OOXML deck verified to contain exactly 8 slides",
+    "ablation": "completed for RRF k, candidate depth, and title-only versus title-plus-abstract",
+    "final_result_audit": "passed"
+  },
+  "tests": {
+    "research_pytest": "11 passed",
+    "backend_pytest": "2 passed with a dummy GROQ_API_KEY; no provider API calls made",
+    "backend_uvicorn_smoke": "started; GET / and /docs returned HTTP 200",
+    "frontend_build": "passed",
+    "frontend_lint": "existing lint issues remain: 4 react-hooks/set-state-in-effect errors and 1 unused-props warning"
+  },
+  "ui_preservation": {
+    "baseline_frontend_and_streamlit_files": 52,
+    "checksum_comparison": "52 of 52 identical to recorded baseline",
+    "frontend_dependency_files_changed": false,
+    "baseline_screenshots": "pre-existing home, chat, research, and Streamlit overview screenshots checksum-recorded"
+  },
+  "backend_startup_fix": {
+    "cause": "rag_engine.py forced Hugging Face offline mode for every installation, preventing the existing online fallback from downloading a missing embedding model",
+    "change": "model download is allowed by default; set WATERGPT_OFFLINE=1 to explicitly require a local cache",
+    "windows_machine_policy_blocker": "The user's Windows Code Integrity Event 3077 blocks scipy.special._ufuncs.cp312-win_amd64.pyd under VerifiedAndReputableDesktop; this is controlled by Windows security policy, not repository code."
+  }
+}

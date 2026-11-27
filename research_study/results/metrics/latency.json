@@ -1,0 +1,67 @@
+{
+  "retrieval_depth": 1000,
+  "measurement": "single-query, repeated, CPU/GPU device in run metadata",
+  "steady_state": {
+    "BM25": {
+      "mean_seconds": 0.017255723276661885,
+      "median_seconds": 0.015904000499972426,
+      "p95_seconds": 0.030241012549879542,
+      "n": 900
+    },
+    "Dense": {
+      "mean_seconds": 0.012705582059999566,
+      "median_seconds": 0.012561039999923196,
+      "p95_seconds": 0.017203405899999778,
+      "n": 900
+    },
+    "Hybrid RRF": {
+      "mean_seconds": 0.032992621704445356,
+      "median_seconds": 0.031483481999885043,
+      "p95_seconds": 0.05020820370011734,
+      "n": 900
+    },
+    "components": {
+      "bm25_query": {
+        "mean_seconds": 0.018934225926670177,
+        "median_seconds": 0.017212251000046308,
+        "p95_seconds": 0.0329702873000997,
+        "n": 300
+      },
+      "dense_query_embedding": {
+        "mean_seconds": 0.013238569380002901,
+        "median_seconds": 0.012970731999871532,
+        "p95_seconds": 0.017682149500024027,
+        "n": 300
+      },
+      "faiss_search": {
+        "mean_seconds": 0.0006446572333379663,
+        "median_seconds": 0.0006385085000601975,
+        "p95_seconds": 0.0008295153999370086,
+        "n": 300
+      },
+      "rrf_fusion": {
+        "mean_seconds": 0.001843326646664991,
+        "median_seconds": 0.0012868680000792665,
+        "p95_seconds": 0.0015467891501657505,
+        "n": 300
+      },
+      "hybrid_component_sum": {
+        "mean_seconds": 0.03466077918667603,
+        "median_seconds": 0.03185059299994464,
+        "p95_seconds": 0.05220505570025581,
+        "n": 300
+      }
+    }
+  },
+  "build_and_query_components_seconds": {
+    "bm25_index_build_seconds": 0.5313600880001559,
+    "dense_model_load_seconds": 1.331249064999838,
+    "document_embedding_seconds_this_run": 0.0,
+    "document_embedding_cold_seconds": 312.5554620500001,
+    "embedding_cache_hit": true,
+    "faiss_index_build_seconds": 0.001561344999799985,
+    "embedding_dimension": 384,
+    "model_max_sequence_length": 256,
+    "device": "cpu"
+  }
+}
